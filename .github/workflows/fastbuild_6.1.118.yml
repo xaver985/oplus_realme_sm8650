@@ -477,6 +477,7 @@ jobs:
             patch -p1 -F 3 < ntsync_base.patch || true
             patch -p1 -F 3 < ntsync_compat_${{ env.ANDROID_VERSION }}-${{ env.KERNEL_VERSION }}.patch || true
             # 开启 Droidspaces 容器所需内核支持
+            echo "CONFIG_USER_NS=y" >> ./arch/arm64/configs/gki_defconfig
             echo "CONFIG_PID_NS=y" >> ./arch/arm64/configs/gki_defconfig
             echo "CONFIG_IPC_NS=y" >> ./arch/arm64/configs/gki_defconfig
             echo "CONFIG_SYSVIPC=y" >> ./arch/arm64/configs/gki_defconfig
